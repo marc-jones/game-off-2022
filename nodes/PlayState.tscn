@@ -8,6 +8,13 @@
 [node name="LightManager" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
+[node name="Origins" type="Node2D" parent="LightManager"]
+
+[node name="Line2D" type="Line2D" parent="LightManager/Origins"]
+points = PoolVector2Array( 27, 77, 93.5247, 23.491, 228, 75 )
+default_color = Color( 1, 1, 1, 1 )
+end_cap_mode = 2
+
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 453, 120 )
 script = ExtResource( 1 )

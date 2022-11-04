@@ -2,7 +2,7 @@ extends RayCast2D
 
 signal spawn_reflection
 
-const max_length = 1024
+const max_length = 2048
 
 var child_ray
 var parent_ray
