@@ -72,7 +72,7 @@ func calculate_alpha(distance, ray_count):
 		min(1.0, RAY_DENSITY / (distance / ray_count)) * MAX_ALPHA
 	)
 
-func _process(delta):
+func _physics_process(delta):
 	update()
 
 func ray_groupings():

@@ -22,6 +22,7 @@ func _physics_process(delta):
 				# Update child
 				child_ray.set_position(get_collision_point())
 				child_ray.set_direction(get_collision_normal())
+				child_ray.force_raycast_update()
 			else:
 				# Create child
 				emit_signal(
