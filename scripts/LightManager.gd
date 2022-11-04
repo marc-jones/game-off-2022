@@ -21,6 +21,7 @@ func add_ray(position, direction, origin_ray, origin_object):
 	if not origin_object == null:
 		ray.add_exception(origin_object)
 	add_child(ray)
+	ray.force_raycast_update()
 	return(ray)
 
 func initiate_origins():
