@@ -11,7 +11,13 @@ script = ExtResource( 2 )
 [node name="Origins" type="Node2D" parent="LightManager"]
 
 [node name="Line2D" type="Line2D" parent="LightManager/Origins"]
-points = PoolVector2Array( 27, 77, 93.5247, 23.491, 228, 75 )
+points = PoolVector2Array( 27, 77, 93.5247, 23.491, 201, 129 )
+default_color = Color( 1, 1, 1, 1 )
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="LightManager/Origins"]
+position = Vector2( 788, 63 )
+points = PoolVector2Array( 28, -28, 93.5247, 23.491, 28, 84 )
 default_color = Color( 1, 1, 1, 1 )
 end_cap_mode = 2
 
