@@ -1,7 +1,7 @@
 extends Node2D
 
 const light_ray = preload("res://nodes/LightRay.tscn")
-const RAY_DENSITY = 3
+const RAY_DENSITY = 1
 const RAY_GROUPING_MAX_DIFFERENCE = 0.01
 const MAX_ALPHA = 0.8
 
