@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scripts/LightManager.gd" type="Script" id=2]
 [ext_resource path="res://assets/knight_body.png" type="Texture" id=3]
 [ext_resource path="res://assets/tiles/platform.png" type="Texture" id=4]
 [ext_resource path="res://assets/tiles/brick.png" type="Texture" id=5]
+[ext_resource path="res://nodes/Mirror.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -80,22 +81,24 @@ points = PoolVector2Array( 27, 77, 93.5247, 23.491, 201, 129 )
 default_color = Color( 1, 1, 1, 1 )
 end_cap_mode = 2
 
-[node name="Line2D2" type="Line2D" parent="LightManager/Origins"]
-position = Vector2( 0, 56 )
-points = PoolVector2Array( 544, 32, 576, 32, 576, 64 )
-default_color = Color( 1, 1, 1, 1 )
-end_cap_mode = 2
-
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 168, 476 )
+position = Vector2( 116, 516 )
 script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
 position = Vector2( -155, -152 )
 polygon = PoolVector2Array( 155, 112, 183, 140, 183, 192, 127, 192, 127, 140 )
 
-[node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 3 )
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
+
+[node name="Mirror" parent="." instance=ExtResource( 6 )]
+position = Vector2( 512, 44 )
+rotation = -1.57079
+
+[node name="Mirror2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 96, 468 )
+rotation = 2.35619

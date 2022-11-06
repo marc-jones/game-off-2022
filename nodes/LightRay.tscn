@@ -4,4 +4,5 @@
 
 [node name="LightRay" type="RayCast2D"]
 enabled = true
+collision_mask = 3
 script = ExtResource( 1 )
