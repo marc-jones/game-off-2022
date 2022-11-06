@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const speed = 50.0
+const shiny = true
 
 func _ready():
 	pass # Replace with function body.

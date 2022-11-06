@@ -17,7 +17,7 @@ func _physics_process(delta):
 	# Parent ray check is a bit of a hack to get around the issue of child rays
 	# not reliably being killed
 	if is_instance_valid(parent_ray):
-		if is_colliding():
+		if is_colliding() and "shiny" in get_collider():
 			if is_instance_valid(child_ray):
 				# Update child
 				child_ray.set_position(get_collision_point())
