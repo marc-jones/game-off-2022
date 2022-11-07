@@ -66,7 +66,17 @@ func _draw():
 			# Complete polygon
 			cast_tos.invert()
 			positions.append_array(cast_tos)
-			draw_polygon(positions, [Color(1, 1, 0.6, alpha)])
+			var simplified_polygons = Geometry.merge_polygons_2d(positions, PoolVector2Array([]))
+			var draw_polygon_var = null
+			var current_max_verticies = 0
+			for polygon in simplified_polygons:
+				if len(polygon) > current_max_verticies:
+					draw_polygon_var = polygon
+					current_max_verticies = len(polygon)
+			if draw_polygon_var == null or Geometry.triangulate_polygon(draw_polygon_var).empty():
+				print("failed")
+			else:
+				draw_polygon(draw_polygon_var, [Color(1, 1, 0.6, alpha)])
 
 func calculate_alpha(distance, ray_count):
 	return(
