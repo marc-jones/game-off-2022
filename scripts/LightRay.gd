@@ -21,14 +21,14 @@ func _physics_process(delta):
 			if is_instance_valid(child_ray):
 				# Update child
 				child_ray.set_position(get_collision_point())
-				child_ray.set_direction(get_collision_normal())
+				child_ray.set_direction(get_reflection())
 				child_ray.force_raycast_update()
 			else:
 				# Create child
 				emit_signal(
 					"spawn_reflection",
 					get_collision_point(),
-					get_collision_normal(),
+					get_reflection(),
 					self,
 					get_collider()
 				)
@@ -37,6 +37,9 @@ func _physics_process(delta):
 				child_ray.kill()
 	else:
 		kill()
+
+func get_reflection():
+	return(get_cast_to().bounce(get_collision_normal()).normalized())
 
 func set_child_ray(input_ray):
 	child_ray = input_ray

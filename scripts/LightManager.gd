@@ -73,12 +73,15 @@ func _draw():
 				if len(polygon) > current_max_verticies:
 					draw_polygon_var = polygon
 					current_max_verticies = len(polygon)
-			if draw_polygon_var == null or Geometry.triangulate_polygon(draw_polygon_var).empty():
-				print("failed")
-			else:
+			if not (
+				draw_polygon_var == null or
+				Geometry.triangulate_polygon(draw_polygon_var).empty()
+			):
 				draw_polygon(draw_polygon_var, [Color(1, 1, 0.6, alpha)])
 
 func calculate_alpha(distance, ray_count):
+	if distance == 0 or ray_count == 0:
+		return(0.0)
 	return(
 		min(1.0, RAY_DENSITY / (distance / ray_count)) * MAX_ALPHA
 	)
