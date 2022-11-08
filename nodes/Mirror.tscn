@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/Mirror.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 4, 28 )
+extents = Vector2( 4, 24 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 4, 2 )
@@ -27,7 +27,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
-position = Vector2( 0, -32 )
+position = Vector2( 0, -26 )
 shape = SubResource( 5 )
 
 [node name="Bottom" type="StaticBody2D" parent="."]
@@ -35,5 +35,5 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
-position = Vector2( 0, 32 )
+position = Vector2( 0, 26 )
 shape = SubResource( 5 )
