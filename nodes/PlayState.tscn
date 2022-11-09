@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scripts/LightManager.gd" type="Script" id=2]
-[ext_resource path="res://assets/knight_body.png" type="Texture" id=3]
+[ext_resource path="res://assets/knight/knight.png" type="Texture" id=3]
 [ext_resource path="res://assets/tiles/tileset.png" type="Texture" id=4]
 [ext_resource path="res://assets/tiles/brick.png" type="Texture" id=5]
 [ext_resource path="res://nodes/Mirror.tscn" type="PackedScene" id=6]
@@ -279,7 +279,7 @@ default_color = Color( 1, 1, 1, 1 )
 end_cap_mode = 2
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 116, 516 )
+position = Vector2( 112, 524 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
@@ -287,13 +287,13 @@ texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
 position = Vector2( -155, -152 )
-polygon = PoolVector2Array( 155, 112, 183, 140, 183, 192, 127, 192, 127, 140 )
+polygon = PoolVector2Array( 155, 128, 187, 160, 171, 184, 139, 184, 123, 160 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
 
 [node name="Mirror" parent="." instance=ExtResource( 6 )]
-position = Vector2( 736, 76 )
+position = Vector2( 672, 76 )
 rotation = -1.57079
 
 [node name="Mirror2" parent="." instance=ExtResource( 6 )]
@@ -304,4 +304,4 @@ rotation = 2.87979
 position = Vector2( 0, -20 )
 tile_set = SubResource( 23 )
 format = 1
-tile_data = PoolIntArray( 65547, 1610612736, 0, 393217, -1610612736, 0 )
+tile_data = PoolIntArray( 65546, 1610612736, 0, 393217, -1610612736, 0 )

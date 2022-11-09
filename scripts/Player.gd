@@ -22,6 +22,7 @@ func _physics_process(delta):
 		velocity.x += walk * delta
 	velocity.x = clamp(velocity.x, -WALK_MAX_SPEED, WALK_MAX_SPEED)
 	velocity.y += gravity * MASS * delta
+	update_sprite(velocity)
 	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
 	if is_on_floor() and (jumping or falling):
 		jumping = false
@@ -35,3 +36,15 @@ func _physics_process(delta):
 		cayote_timer = 0.0
 	if falling:
 		cayote_timer += delta
+
+func update_sprite(current_velocity):
+	if current_velocity.x < 0:
+		face_left()
+	elif current_velocity.x > 0:
+		face_right()
+
+func face_left():
+	$Sprite.flip_h = false
+
+func face_right():
+	$Sprite.flip_h = true
