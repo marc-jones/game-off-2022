@@ -5,7 +5,6 @@ const WALK_MAX_SPEED = 300
 const JUMP_SPEED = 600
 const MASS = 20
 const CAYOTE_TIME = 0.1
-const shiny = true
 
 var velocity = Vector2()
 var jumping = false
