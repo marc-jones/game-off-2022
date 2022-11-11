@@ -5,6 +5,7 @@ const FILL_DECAY = 20.0
 
 var total = 0.0
 var previous_total = 0.0
+var active = false
 
 func _ready():
 	pass # Replace with function body.
@@ -15,6 +16,9 @@ func detect_light(delta):
 
 func update_fill():
 	$Fill.get_material().set_shader_param("t", total / FILL_SPEED)
+	if not active and total == FILL_SPEED:
+		active = true
+		$Bulb.show()
 
 func _process(delta):
 	if total == previous_total:
