@@ -32,6 +32,8 @@ func _physics_process(delta):
 					self,
 					get_collider()
 				)
+		elif is_colliding() and "light_detector" in get_collider():
+			get_collider().detect_light(delta)
 		else:
 			if is_instance_valid(child_ray):
 				child_ray.kill()
