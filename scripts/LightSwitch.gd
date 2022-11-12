@@ -7,6 +7,8 @@ var total = 0.0
 var previous_total = 0.0
 var active = false
 
+export (NodePath) var target
+
 func _ready():
 	pass # Replace with function body.
 
@@ -19,6 +21,7 @@ func update_fill():
 	if not active and total == FILL_SPEED:
 		active = true
 		$Bulb.show()
+		get_node(target).activate()
 
 func _process(delta):
 	if total == previous_total:
