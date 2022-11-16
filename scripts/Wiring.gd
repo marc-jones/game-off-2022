@@ -8,6 +8,7 @@ const ONLINE_COLOUR = Color("#c2d368")
 const FILL_WIDTH = 2
 
 export (NodePath) var target
+export (bool) var instant = false
 
 var guide_points
 var active = false
@@ -23,9 +24,11 @@ func _ready():
 func activate():
 	active = true
 	create_online_fill()
+	if instant and not target == null:
+		get_node(target).activate()
 
 func _process(delta):
-	if active:
+	if active and not instant:
 		var points = Array($OnlineFill.get_points())
 		points.pop_back()
 		t += (delta * FILL_SPEED) / guide_points[next_idx].distance_to(guide_points[next_idx-1])
@@ -54,7 +57,10 @@ func create_online_fill():
 	var line = Line2D.new()
 	line.name = "OnlineFill"
 #	line.set_position($Guide.get_position())
-	line.set_points([guide_points[0], guide_points[0]])
+	if instant:
+		line.set_points(guide_points)
+	else:
+		line.set_points([guide_points[0], guide_points[0]])
 	line.set_width(FILL_WIDTH)
 	line.set_default_color(ONLINE_COLOUR)
 	line.set_modulate(Color(1.0, 1.5, 1.0))

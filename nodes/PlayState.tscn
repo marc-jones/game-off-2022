@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/LightManager.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://assets/mirror_holder.png" type="Texture" id=7]
 [ext_resource path="res://nodes/Window.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/Wiring.tscn" type="PackedScene" id=9]
+[ext_resource path="res://nodes/PlatformTrack.tscn" type="PackedScene" id=10]
+[ext_resource path="res://nodes/Platform.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -88,6 +90,14 @@ target = NodePath("../../Door")
 [node name="LightSwitch" parent="LevelObjects" instance=ExtResource( 3 )]
 position = Vector2( 960, 332 )
 target = NodePath("../Wiring")
+
+[node name="PlatformTrack" parent="LevelObjects" instance=ExtResource( 10 )]
+points = PoolVector2Array( 736, 588, 736, 332, 864, 332, 864, 588 )
+default_color = Color( 0.541176, 0.690196, 0.376471, 1 )
+platform_path = NodePath("../Platform")
+
+[node name="Platform" parent="LevelObjects" instance=ExtResource( 11 )]
+position = Vector2( 736, 588 )
 
 [node name="ForegroundTileMap" type="TileMap" parent="."]
 position = Vector2( 0, -20 )

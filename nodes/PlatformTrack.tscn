@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/PlatformTrack.gd" type="Script" id=1]
+
+[node name="PlatformTrack" type="Line2D"]
+width = 4.0
+default_color = Color( 0.541176, 0.690196, 0.376471, 1 )
+script = ExtResource( 1 )
