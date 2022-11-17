@@ -27,6 +27,12 @@ func activate():
 	if instant and not target == null:
 		get_node(target).activate()
 
+func deactivate():
+	active = false
+	remove_online_fill()
+	if instant and not target == null:
+		get_node(target).deactivate()
+
 func _process(delta):
 	if active and not instant:
 		var points = Array($OnlineFill.get_points())
@@ -66,3 +72,8 @@ func create_online_fill():
 	line.set_modulate(Color(1.0, 1.5, 1.0))
 	add_child(line)
 	next_idx = 1
+
+func remove_online_fill():
+	var node = get_node("OnlineFill")
+	remove_child(node)
+	node.queue_free()

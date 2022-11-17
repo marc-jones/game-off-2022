@@ -44,6 +44,12 @@ func activate():
 	for node in online_nodes:
 		node.show()
 
+func deactivate():
+	active = false
+	$OnlineFill.hide()
+	for node in online_nodes:
+		node.hide()
+
 func _physics_process(delta):
 	if not Engine.editor_hint:
 		if active:
