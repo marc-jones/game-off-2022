@@ -1,6 +1,6 @@
 extends Line2D
 
-const FILL_SPEED = 100.0
+const FILL_SPEED = 0.6
 const OUTLINE_COLOUR = Color("#8ab060")
 const OUTLINE_WIDTH = 4
 const OFFLINE_COLOUR = Color("#4e584a")
@@ -14,12 +14,20 @@ var guide_points
 var active = false
 var next_idx = 0
 var t = 0.0
+var total_length = 0.0
 
 func _ready():
 	set_width(OUTLINE_WIDTH)
 	set_default_color(OUTLINE_COLOUR)
 	guide_points = get_points()
 	create_offline_fill()
+	calculate_total_length()
+
+func calculate_total_length():
+	var points = Array(get_points())
+	while len(points) > 1:
+		var previous_point = points.pop_front()
+		total_length += previous_point.distance_to(points.front())
 
 func activate():
 	active = true
@@ -37,7 +45,7 @@ func _process(delta):
 	if active and not instant:
 		var points = Array($OnlineFill.get_points())
 		points.pop_back()
-		t += (delta * FILL_SPEED) / guide_points[next_idx].distance_to(guide_points[next_idx-1])
+		t += (delta * total_length * FILL_SPEED) / guide_points[next_idx].distance_to(guide_points[next_idx-1])
 		if 1.0 <= t:
 			t -= 1
 			points.append(guide_points[next_idx])
