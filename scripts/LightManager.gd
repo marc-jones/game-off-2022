@@ -100,7 +100,11 @@ func ray_groupings():
 		for ray in origin_rays:
 			if is_instance_valid(ray.child_ray):
 				child_group.append(ray.child_ray)
-		ray_hierarchy.append(child_group)
+			else:
+				ray_hierarchy.append(child_group)
+				child_group = []
+		if len(child_group) > 0:
+			ray_hierarchy.append(child_group)
 	while len(ray_hierarchy) > 0:
 		var ray_group = ray_hierarchy.pop_front()
 		var child_group = []
@@ -108,6 +112,9 @@ func ray_groupings():
 		for ray in ray_group:
 			if is_instance_valid(ray.child_ray):
 				child_group.append(ray.child_ray)
+			else:
+				ray_hierarchy.append(child_group)
+				child_group = []
 			if len(current_group) == 0:
 				current_group.append(ray)
 			else:
