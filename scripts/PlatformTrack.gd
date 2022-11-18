@@ -128,6 +128,7 @@ func add_node(input_pos):
 	online_node.name = "OnlineNode"
 	online_node.texture = ONLINE_NODE_TEX
 	online_node.position = input_pos
+	online_node.set_modulate(Color(1.0, 1.5, 1.0))
 	online_node.hide()
 	online_nodes.append(online_node)
 	add_child(online_node)
