@@ -53,22 +53,44 @@ func deactivate():
 func _physics_process(delta):
 	if not Engine.editor_hint:
 		if active:
+			var platform = get_node(platform_path)
 			t += (delta * PLATFORM_SPEED) / guide_points[next_idx].distance_to(guide_points[next_idx-direction])
 			if 1.0 <= t:
 				t -= 1.0
 				next_idx += direction
-			if next_idx < 0:
-				direction *= -1
-				next_idx = 1
-			if next_idx == len(points):
-				direction *= -1
-				next_idx = len(points) - 2
-			get_node(platform_path).position = (
-				guide_points[next_idx-direction].linear_interpolate(
-					guide_points[next_idx],
-					t
-				)
+			clamp_next_idx()
+			var next_pos = guide_points[next_idx-direction].linear_interpolate(
+				guide_points[next_idx],
+				t
 			)
+			test_change_direction_due_to_collision(platform, next_pos)
+			next_pos = guide_points[next_idx-direction].linear_interpolate(
+				guide_points[next_idx],
+				t
+			)
+			platform.position = next_pos
+
+func test_change_direction_due_to_collision(platform, next_pos):
+	var collision = platform.move_and_collide(next_pos - platform.position, true, true, true)
+	if collision:
+		if collision.collider.is_in_group("platform_blocker"):
+			var push_collision = collision.collider.move_and_collide(next_pos - platform.position, true, true, true)
+			if not push_collision == null:
+				next_idx -= direction
+				direction *= -1
+				clamp_next_idx()
+				t = (
+					guide_points[next_idx-direction].distance_to(platform.position) /
+					guide_points[next_idx].distance_to(guide_points[next_idx-direction])
+				)
+
+func clamp_next_idx():
+	if next_idx < 0:
+		direction *= -1
+		next_idx = 1
+	if next_idx == len(points):
+		direction *= -1
+		next_idx = len(points) - 2
 
 func create_offline_fill():
 	var line = Line2D.new()
