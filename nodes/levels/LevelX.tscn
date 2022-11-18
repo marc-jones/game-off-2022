@@ -5,8 +5,8 @@
 [ext_resource path="res://nodes/LightSwitch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/TileSet.tres" type="TileSet" id=4]
 [ext_resource path="res://nodes/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/SmallWindow.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/mirror_holder.png" type="Texture" id=7]
-[ext_resource path="res://nodes/Window.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/Wiring.tscn" type="PackedScene" id=9]
 [ext_resource path="res://nodes/PlatformTrack.tscn" type="PackedScene" id=10]
 [ext_resource path="res://nodes/Platform.tscn" type="PackedScene" id=11]
@@ -59,8 +59,8 @@ tile_data = PoolIntArray( -1, 2, 1, -65536, 2, 2, -65535, 2, 2, -65534, 2, 2, -6
 [node name="Door" parent="." instance=ExtResource( 5 )]
 position = Vector2( 992, 524 )
 
-[node name="Window" parent="." instance=ExtResource( 8 )]
-position = Vector2( 512, 156 )
+[node name="SmallWindow" parent="." instance=ExtResource( 6 )]
+position = Vector2( 512, 108 )
 
 [node name="LightManager" type="Node2D" parent="."]
 modulate = Color( 1.3, 1.3, 1, 1 )
@@ -70,7 +70,7 @@ script = ExtResource( 2 )
 
 [node name="Line2D" type="Line2D" parent="LightManager/Origins"]
 position = Vector2( 64, 64 )
-points = PoolVector2Array( 388, 188, 508, 188, 508, 220 )
+points = PoolVector2Array( 388, 76, 508, 76, 508, 112 )
 default_color = Color( 1, 1, 1, 1 )
 end_cap_mode = 2
 
@@ -104,7 +104,7 @@ platform_path = NodePath("../Platform")
 position = Vector2( 480, 588 )
 
 [node name="PushBox" parent="LevelObjects" instance=ExtResource( 13 )]
-position = Vector2( 652, 528 )
+position = Vector2( 768, 528 )
 
 [node name="ForegroundTileMap" type="TileMap" parent="."]
 position = Vector2( 0, -20 )
