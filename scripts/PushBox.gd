@@ -1,8 +1,11 @@
+tool
 extends KinematicBody2D
 
 var MASS = 10
 var pushing_bodies = []
 var velocity = Vector2()
+
+export (int) var mirror_angle = 45 setget set_mirror_angle
 
 onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -31,3 +34,7 @@ func _physics_process(delta):
 		if body.is_on_floor() and not sign(body.velocity.x) == sign(dir):
 			velocity.x = sign(body.velocity.x) * max(abs(body.velocity.x), abs(velocity.x))
 	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
+
+func set_mirror_angle(input_angle):
+	mirror_angle = input_angle
+	$Mirror.set_rotation_degrees(mirror_angle)

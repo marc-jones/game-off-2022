@@ -104,7 +104,7 @@ platform_path = NodePath("../Platform")
 position = Vector2( 480, 588 )
 
 [node name="PushBox" parent="LevelObjects" instance=ExtResource( 13 )]
-position = Vector2( 768, 528 )
+position = Vector2( 768, 527.992 )
 
 [node name="ForegroundTileMap" type="TileMap" parent="."]
 position = Vector2( 0, -20 )
