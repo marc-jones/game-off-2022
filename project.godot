@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Knight In Shining Armour"
-run/main_scene="res://nodes/PlayState.tscn"
+run/main_scene="res://nodes/scenes/SceneManager.tscn"
 config/icon="res://icon.png"
 
 [gui]

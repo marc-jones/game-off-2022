@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/SceneTransition.gd" type="Script" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float t : hint_range(0.0, 1.0);
+uniform vec2 center;
+uniform vec2 resolution;
+
+float calc_max_distance(vec2 c, vec2 r)
+{
+	return(
+		max(
+			max(
+				distance(c, vec2(0.0)),
+				distance(c, vec2(0.0, r.y))
+			),
+			max(
+				distance(c, vec2(r.x, 0.0)),
+				distance(c, r)
+			)
+		)
+	);
+}
+
+void fragment()
+{
+	float alpha = 1.0;
+	if (distance(center, UV * resolution) <= calc_max_distance(center, resolution) * t) {
+		alpha = 0.0;
+	}
+	COLOR = vec4(COLOR.rgb, alpha);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/t = 0.5
+shader_param/center = Vector2( 512, 300 )
+shader_param/resolution = Vector2( 1024, 600 )
+
+[node name="SceneTransition" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 2 )
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+color = Color( 0.207843, 0.168627, 0.258824, 1 )
+
+[node name="Tween" type="Tween" parent="."]

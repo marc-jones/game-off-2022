@@ -17,7 +17,7 @@ func _ready():
 	var _discard = $UI/Back.connect("button_up", self, "start_menu")
 	setup_level_buttons()
 
-func start_game():
+func start_menu():
 	emit_signal("start_menu")
 
 func setup_level_buttons():
