@@ -1,0 +1,136 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scripts/LightManager.gd" type="Script" id=1]
+[ext_resource path="res://nodes/PushBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/Window.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/ButtonTheme.tres" type="Theme" id=4]
+[ext_resource path="res://nodes/TileSet.tres" type="TileSet" id=5]
+[ext_resource path="res://nodes/Wiring.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/mirror_holder.png" type="Texture" id=7]
+[ext_resource path="res://nodes/Mirror.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/InstantLightSwitch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/fonts/alagard.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="Environment" id=2]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_levels/6 = true
+glow_levels/7 = true
+glow_intensity = 2.0
+glow_blend_mode = 1
+glow_bicubic_upscale = true
+adjustment_brightness = 3.02
+
+[sub_resource type="TileSet" id=23]
+0/name = "mirror_holder.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="DynamicFont" id=24]
+size = 80
+outline_size = 2
+font_data = ExtResource( 10 )
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="BackgroundTileMap" type="TileMap" parent="."]
+position = Vector2( 0, -20 )
+tile_set = ExtResource( 5 )
+show_collision = true
+collision_layer = 3
+collision_mask = 3
+format = 1
+tile_data = PoolIntArray( -1, 2, 1, -65536, 2, 2, -65535, 2, 2, -65534, 2, 2, -65533, 2, 2, -65532, 2, 2, -65531, 2, 2, -65530, 2, 2, -65529, 2, 2, -65528, 2, 2, -65527, 2, 2, -65526, 2, 2, -65525, 2, 2, -65524, 2, 2, -65523, 2, 2, -65522, 2, 2, -65521, 2, 2, -65520, 2, 3, 65535, 2, 65537, 0, 2, 65538, 1, 2, 65538, 2, 2, 65538, 3, 2, 65538, 4, 2, 65538, 5, 2, 65538, 6, 2, 65538, 7, 2, 65538, 8, 2, 65538, 9, 2, 65538, 10, 2, 65538, 11, 2, 65540, 12, 2, 131074, 13, 2, 131074, 14, 2, 196612, 15, 2, 65538, 16, 2, 65539, 131071, 2, 65537, 65536, 2, 65538, 65537, 2, 65538, 65538, 2, 65538, 65539, 2, 65538, 65540, 2, 65538, 65541, 2, 65538, 65542, 2, 65538, 65543, 2, 65538, 65544, 2, 65538, 65545, 2, 65538, 65546, 2, 65540, 65547, 2, 131075, 65548, 0, 0, 65549, 0, 0, 65550, 2, 131073, 65551, 2, 196612, 65552, 2, 65539, 196607, 2, 65537, 131072, 2, 65538, 131073, 2, 65538, 131074, 2, 65538, 131075, 2, 65538, 131076, 2, 65538, 131077, 2, 65538, 131078, 2, 65538, 131079, 2, 65538, 131080, 2, 65538, 131081, 2, 65540, 131082, 2, 131075, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 2, 65537, 131088, 2, 65539, 262143, 2, 65537, 196608, 2, 65540, 196609, 2, 131074, 196610, 2, 131074, 196611, 2, 131074, 196612, 2, 131074, 196613, 2, 196612, 196614, 2, 65538, 196615, 2, 65538, 196616, 2, 65540, 196617, 2, 131075, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 2, 65537, 196624, 2, 65539, 327679, 2, 65537, 262144, 2, 65539, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 2, 65537, 262150, 2, 65538, 262151, 2, 65540, 262152, 2, 131075, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 2, 65537, 262160, 2, 65539, 393215, 2, 65537, 327680, 2, 65539, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 2, 131073, 327686, 2, 131074, 327687, 2, 131075, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 2, 65537, 327696, 2, 65539, 458751, 2, 65537, 393216, 2, 65539, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 2, 65537, 393232, 2, 65539, 524287, 2, 65537, 458752, 2, 131076, 458753, 2, 2, 458754, 2, 2, 458755, 2, 2, 458756, 2, 2, 458757, 2, 3, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 2, 65537, 458768, 2, 65539, 589823, 2, 65537, 524288, 2, 65538, 524289, 2, 65538, 524290, 2, 65538, 524291, 2, 65538, 524292, 2, 65538, 524293, 2, 131076, 524294, 2, 2, 524295, 2, 2, 524296, 2, 2, 524297, 2, 3, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 2, 65537, 524304, 2, 65539, 655359, 2, 65537, 589824, 2, 65538, 589825, 2, 65538, 589826, 2, 65538, 589827, 2, 65538, 589828, 2, 65538, 589829, 2, 65538, 589830, 2, 65538, 589831, 2, 65538, 589832, 2, 65538, 589833, 2, 131076, 589834, 2, 2, 589835, 2, 2, 589836, 2, 2, 589837, 2, 2, 589838, 2, 2, 589839, 2, 4, 589840, 2, 65539, 720895, 2, 131073, 655360, 2, 131074, 655361, 2, 131074, 655362, 2, 131074, 655363, 2, 131074, 655364, 2, 131074, 655365, 2, 131074, 655366, 2, 131074, 655367, 2, 131074, 655368, 2, 131074, 655369, 2, 131074, 655370, 2, 131074, 655371, 2, 131074, 655372, 2, 131074, 655373, 2, 131074, 655374, 2, 131074, 655375, 2, 131074, 655376, 2, 131075 )
+
+[node name="Window" parent="." instance=ExtResource( 3 )]
+position = Vector2( 832, 204 )
+
+[node name="LightManager" type="Node2D" parent="."]
+modulate = Color( 1.3, 1.3, 1, 1 )
+script = ExtResource( 1 )
+
+[node name="Origins" type="Node2D" parent="LightManager"]
+
+[node name="Line2D" type="Line2D" parent="LightManager/Origins"]
+position = Vector2( 64, 64 )
+points = PoolVector2Array( 708, 236, 828, 236, 816, 268 )
+default_color = Color( 1, 1, 1, 1 )
+end_cap_mode = 2
+
+[node name="LevelObjects" type="Node2D" parent="."]
+
+[node name="Mirror" parent="LevelObjects" instance=ExtResource( 8 )]
+position = Vector2( 96, 332 )
+rotation = 3.14159
+
+[node name="Wiring" parent="LevelObjects" instance=ExtResource( 6 )]
+points = PoolVector2Array( 320, 300, 352, 300, 352, 204, 128, 204, 128, 140 )
+instant = true
+
+[node name="InstantLightSwitch" parent="LevelObjects" instance=ExtResource( 9 )]
+position = Vector2( 320, 300 )
+target = NodePath("../Wiring")
+
+[node name="PushBox" parent="LevelObjects" instance=ExtResource( 2 )]
+position = Vector2( 816, 527.992 )
+mirror_angle = 60
+
+[node name="ForegroundTileMap" type="TileMap" parent="."]
+position = Vector2( 0, -20 )
+tile_set = SubResource( 23 )
+format = 1
+tile_data = PoolIntArray( 327681, -1610612736, 0 )
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="UI"]
+margin_right = 640.0
+margin_bottom = 172.0
+custom_colors/font_color = Color( 0.760784, 0.827451, 0.407843, 1 )
+custom_colors/font_outline_modulate = Color( 0.541176, 0.690196, 0.376471, 1 )
+custom_fonts/font = SubResource( 24 )
+text = "Knight in Shining Armour"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Play" type="Button" parent="UI"]
+margin_left = 112.0
+margin_top = 460.0
+margin_right = 304.0
+margin_bottom = 508.0
+theme = ExtResource( 4 )
+text = "Play"
+
+[node name="LevelSelect" type="Button" parent="UI"]
+margin_left = 112.0
+margin_top = 524.0
+margin_right = 304.0
+margin_bottom = 572.0
+theme = ExtResource( 4 )
+text = "Select Level"
+
+[node name="Credits" type="Button" parent="UI"]
+margin_left = 400.0
+margin_top = 524.0
+margin_right = 592.0
+margin_bottom = 572.0
+theme = ExtResource( 4 )
+text = "Credits"
