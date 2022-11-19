@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	pass # Replace with function body.
+	$Fill.get_material().set_shader_param("t", 0.0)
 
 func activate():
 	$AnimationPlayer.play("Open")
