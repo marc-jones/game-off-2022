@@ -54,6 +54,14 @@ func level_complete(idx):
 #	add_child(new_game)
 #	initiate_fade_to_transparent("remove_transition_overlay")
 
+# Start first level
+func play():
+	for idx in range(len(LEVELS)):
+		if not idx in levels_completed:
+			start_level(idx)
+			return
+	start_level(0)
+
 # Start specific level
 func start_level(idx):
 	if not has_node("SceneTransition"):
@@ -78,7 +86,7 @@ func start_menu():
 func deferred_start_menu():
 	clear_scene()
 	var menu = menu_scene.instance()
-#	menu.connect("start_game", self, "start_new_game")
+	menu.connect("play", self, "play")
 	menu.connect("start_level_select", self, "start_level_select")
 	menu.connect("start_credits", self, "start_credits")
 	add_child(menu)
