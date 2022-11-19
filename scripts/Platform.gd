@@ -3,6 +3,9 @@ extends KinematicBody2D
 
 export (int) var width = 1 setget set_width
 
+func _ready():
+	set_width(width)
+
 func set_width(i):
 	width = i
 	update_tilemap()
