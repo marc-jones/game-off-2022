@@ -14,6 +14,11 @@ config/name="Knight In Shining Armour"
 run/main_scene="res://nodes/scenes/SceneManager.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
