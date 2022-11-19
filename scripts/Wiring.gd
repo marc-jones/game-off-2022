@@ -32,13 +32,13 @@ func calculate_total_length():
 func activate():
 	active = true
 	create_online_fill()
-	if instant and not target == null:
+	if instant and not target == null and has_node(target):
 		get_node(target).activate()
 
 func deactivate():
 	active = false
 	remove_online_fill()
-	if instant and not target == null:
+	if instant and not target == null and has_node(target):
 		get_node(target).deactivate()
 
 func _process(delta):
