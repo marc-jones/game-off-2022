@@ -7,8 +7,11 @@ const scene_transition = preload("res://nodes/scenes/SceneTransition.tscn")
 
 const CONFIG_FILEPATH = "user://game_off_2022.cfg"
 const LEVELS = [
-	preload("res://nodes/levels/LevelX.tscn"),
-	preload("res://nodes/PlayState.tscn")
+	preload("res://nodes/levels/Level1.tscn"),
+	preload("res://nodes/levels/Level2.tscn"),
+	preload("res://nodes/levels/Level3.tscn"),
+	preload("res://nodes/levels/Level4.tscn"),
+	preload("res://nodes/levels/LevelX.tscn")
 ]
 var levels_completed = []
 var current_level = 0

@@ -1,18 +1,13 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/LightManager.gd" type="Script" id=2]
 [ext_resource path="res://nodes/LightSwitch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/TileSet.tres" type="TileSet" id=4]
 [ext_resource path="res://nodes/Door.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/Mirror.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/mirror_holder.png" type="Texture" id=7]
 [ext_resource path="res://nodes/Window.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/Wiring.tscn" type="PackedScene" id=9]
-[ext_resource path="res://nodes/PlatformTrack.tscn" type="PackedScene" id=10]
-[ext_resource path="res://nodes/Platform.tscn" type="PackedScene" id=11]
-[ext_resource path="res://nodes/InstantLightSwitch.tscn" type="PackedScene" id=12]
-[ext_resource path="res://nodes/PushBox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://nodes/LevelExit.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scripts/LevelScene.gd" type="Script" id=15]
 
@@ -45,7 +40,7 @@ adjustment_brightness = 3.02
 0/shapes = [  ]
 0/z_index = 0
 
-[node name="PlayState" type="Node2D"]
+[node name="Level1" type="Node2D"]
 script = ExtResource( 15 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -80,48 +75,18 @@ end_cap_mode = 2
 
 [node name="LevelObjects" type="Node2D" parent="."]
 
-[node name="Mirror" parent="LevelObjects" instance=ExtResource( 6 )]
-position = Vector2( 608, 76 )
-rotation = -1.57079
-
-[node name="Mirror2" parent="LevelObjects" instance=ExtResource( 6 )]
-position = Vector2( 96, 396 )
-rotation = 2.87979
-
 [node name="Wiring" parent="LevelObjects" instance=ExtResource( 9 )]
-points = PoolVector2Array( 1012, 332, 1012, 396, 992, 428, 992, 492 )
+points = PoolVector2Array( 1012, 140, 1012, 152, 992, 172, 992, 492 )
 target = NodePath("../../Door")
 
 [node name="LightSwitch" parent="LevelObjects" instance=ExtResource( 3 )]
-position = Vector2( 960, 332 )
+position = Vector2( 960, 140 )
 target = NodePath("../Wiring")
-
-[node name="Wiring2" parent="LevelObjects" instance=ExtResource( 9 )]
-points = PoolVector2Array( 64, 460, 16, 460, 16, 588, 864, 588 )
-target = NodePath("../PlatformTrack")
-instant = true
-
-[node name="InstantLightSwitch" parent="LevelObjects" instance=ExtResource( 12 )]
-position = Vector2( 64, 460 )
-rotation = -3.14159
-target = NodePath("../Wiring2")
-
-[node name="PlatformTrack" parent="LevelObjects" instance=ExtResource( 10 )]
-points = PoolVector2Array( 448, 528, 768, 528, 768, 332, 864, 332, 864, 588 )
-default_color = Color( 0.541176, 0.690196, 0.376471, 1 )
-platform_path = NodePath("../Platform")
-
-[node name="Platform" parent="LevelObjects" instance=ExtResource( 11 )]
-position = Vector2( 448, 528 )
-
-[node name="PushBox" parent="LevelObjects" instance=ExtResource( 13 )]
-position = Vector2( 652, 527.992 )
 
 [node name="ForegroundTileMap" type="TileMap" parent="."]
 position = Vector2( 0, -20 )
 tile_set = SubResource( 23 )
 format = 1
-tile_data = PoolIntArray( 65545, 1610612736, 0, 393217, -1610612736, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 104, 524 )
