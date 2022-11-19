@@ -43,6 +43,7 @@ shader_param/center = Vector2( 512, 300 )
 shader_param/resolution = Vector2( 1024, 600 )
 
 [node name="SceneTransition" type="Node2D"]
+z_index = 100
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]

@@ -20,6 +20,9 @@ func _ready():
 func start_menu():
 	emit_signal("start_menu")
 
+func start_level(idx):
+	emit_signal("start_level", idx)
+
 func setup_level_buttons():
 	for idx in range(number_of_levels):
 		var button = PACKED_LEVEL_BUTTON.instance()

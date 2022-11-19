@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/LightManager.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://nodes/Platform.tscn" type="PackedScene" id=11]
 [ext_resource path="res://nodes/InstantLightSwitch.tscn" type="PackedScene" id=12]
 [ext_resource path="res://nodes/PushBox.tscn" type="PackedScene" id=13]
+[ext_resource path="res://nodes/LevelExit.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scripts/LevelScene.gd" type="Script" id=15]
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -44,6 +46,7 @@ adjustment_brightness = 3.02
 0/z_index = 0
 
 [node name="PlayState" type="Node2D"]
+script = ExtResource( 15 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
@@ -112,7 +115,7 @@ platform_path = NodePath("../Platform")
 position = Vector2( 448, 528 )
 
 [node name="PushBox" parent="LevelObjects" instance=ExtResource( 13 )]
-position = Vector2( 652, 528 )
+position = Vector2( 652, 527.992 )
 
 [node name="ForegroundTileMap" type="TileMap" parent="."]
 position = Vector2( 0, -20 )
@@ -122,3 +125,6 @@ tile_data = PoolIntArray( 65545, 1610612736, 0, 393217, -1610612736, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 104, 524 )
+
+[node name="LevelExit" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1120, 524 )
