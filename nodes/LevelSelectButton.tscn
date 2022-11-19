@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://nodes/ButtonTheme.tres" type="Theme" id=1]
+
+[node name="LevelSelectButton" type="Button"]
+margin_left = 240.0
+margin_top = 204.0
+margin_right = 304.0
+margin_bottom = 268.0
+theme = ExtResource( 1 )
+text = "1"
