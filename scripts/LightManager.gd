@@ -98,7 +98,7 @@ func ray_groupings():
 		# Establish child groups
 		var child_group = []
 		for ray in origin_rays:
-			if is_instance_valid(ray.child_ray):
+			if is_instance_valid(ray) and is_instance_valid(ray.child_ray):
 				child_group.append(ray.child_ray)
 			else:
 				ray_hierarchy.append(child_group)

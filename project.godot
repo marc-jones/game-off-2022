@@ -49,7 +49,6 @@ crouch={
 
 [physics]
 
-common/physics_fps=120
 common/enable_pause_aware_picking=true
 
 [rendering]

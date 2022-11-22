@@ -43,7 +43,10 @@ func _physics_process(delta):
 		kill()
 
 func get_reflection():
-	return(get_cast_to().bounce(get_collision_normal().normalized()).normalized())
+	var norm = get_collision_normal()
+	if not norm.is_normalized():
+		kill()
+	return(get_cast_to().bounce(norm).normalized())
 
 func set_child_ray(input_ray):
 	child_ray = input_ray
