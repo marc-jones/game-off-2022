@@ -41,7 +41,7 @@ adjustment_brightness = 3.02
 0/shapes = [  ]
 0/z_index = 0
 
-[node name="Level1" type="Node2D"]
+[node name="Level3" type="Node2D"]
 script = ExtResource( 15 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
