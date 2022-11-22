@@ -21,7 +21,7 @@ var crouching = false
 var crouch_angle = 0.0
 
 const PUSH_FUDGE = 50
-var push_body
+var push_bodies = []
 
 onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -48,7 +48,7 @@ func _physics_process(delta):
 		velocity.y += gravity * MASS * delta
 		update_sprite(velocity)
 		# Hack to get around edge cases
-		if push_body:
+		for push_body in push_bodies:
 			var collision = move_and_collide(Vector2(velocity.x, 0), true, true, true)
 			if collision:
 				if collision.collider == push_body:
@@ -103,8 +103,9 @@ func crouch_rotate():
 
 func push_callback(entered, input_push_body):
 	if entered:
-		push_body = input_push_body
+		push_bodies.append(input_push_body)
 		current_max_speed = PUSH_MAX_SPEED
 	else:
-		push_body = null
-		current_max_speed = WALK_MAX_SPEED
+		push_bodies.erase(input_push_body)
+		if len(push_bodies) == 0:
+			current_max_speed = WALK_MAX_SPEED
