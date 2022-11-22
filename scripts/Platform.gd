@@ -21,4 +21,4 @@ func update_tilemap():
 
 func update_collision_shapes():
 	$CollisionShape2D.shape.extents.x = width * 32
-	$Area2D/CollisionShape2D.shape.height = 56 + 64*(width-1)
+	$Area2D/CollisionShape2D.shape.extents.x = width * 32

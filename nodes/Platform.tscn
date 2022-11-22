@@ -13,7 +13,7 @@
 0/autotile/bitmask_mode = 1
 0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 48, Vector2( 1, 0 ), 56, Vector2( 2, 0 ), 24, Vector2( 3, 0 ), 16 ]
 0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 64, 8 )
+0/autotile/tile_size = Vector2( 64, 16 )
 0/autotile/spacing = 0
 0/autotile/occluder_map = [  ]
 0/autotile/navpoly_map = [  ]
@@ -29,17 +29,16 @@
 0/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32, 4 )
+extents = Vector2( 32, 8 )
 
-[sub_resource type="CapsuleShape2D" id=3]
-radius = 3.99998
-height = 56.0
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32, 8 )
 
 [node name="Platform" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2( -32, -4 )
+position = Vector2( -32, -8 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 64, 8 )
 format = 1
@@ -53,6 +52,4 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 0, 4.19617e-05 )
-rotation = 1.5708
 shape = SubResource( 3 )
