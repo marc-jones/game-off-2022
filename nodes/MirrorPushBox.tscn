@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/PushBox.gd" type="Script" id=1]
 [ext_resource path="res://assets/crate_mirror_holder.png" type="Texture" id=2]
-[ext_resource path="res://assets/crate.png" type="Texture" id=3]
+[ext_resource path="res://assets/short_crate.png" type="Texture" id=3]
 [ext_resource path="res://nodes/Mirror.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/mirror_rivet.png" type="Texture" id=5]
 
