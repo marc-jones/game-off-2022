@@ -75,7 +75,9 @@ func test_change_direction_due_to_collision(platform, next_pos):
 	if collision:
 		if collision.collider.is_in_group("platform_blocker"):
 			var push_collision = collision.collider.move_and_collide(next_pos - platform.position, true, true, true)
-			if not push_collision == null:
+			if is_instance_valid(push_collision) and push_collision.collider.is_in_group("platform_blocker"):
+				push_collision = push_collision.collider.move_and_collide(next_pos - platform.position, true, true, true)
+			if is_instance_valid(push_collision) and (not push_collision.collider == platform):
 				next_idx -= direction
 				direction *= -1
 				clamp_next_idx()
