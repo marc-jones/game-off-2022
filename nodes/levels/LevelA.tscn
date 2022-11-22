@@ -1,0 +1,148 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scripts/LightManager.gd" type="Script" id=1]
+[ext_resource path="res://nodes/SmallWindow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/BentMirrorPushBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/TileSet.tres" type="TileSet" id=4]
+[ext_resource path="res://nodes/Wiring.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/mirror_holder.png" type="Texture" id=6]
+[ext_resource path="res://scripts/LevelScene.gd" type="Script" id=7]
+[ext_resource path="res://nodes/LevelExit.tscn" type="PackedScene" id=9]
+[ext_resource path="res://nodes/Platform.tscn" type="PackedScene" id=11]
+[ext_resource path="res://nodes/PlatformTrack.tscn" type="PackedScene" id=12]
+[ext_resource path="res://nodes/Door.tscn" type="PackedScene" id=13]
+[ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=14]
+[ext_resource path="res://nodes/InstantLightSwitch.tscn" type="PackedScene" id=15]
+
+[sub_resource type="Environment" id=2]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_levels/6 = true
+glow_levels/7 = true
+glow_intensity = 2.0
+glow_blend_mode = 1
+glow_bicubic_upscale = true
+adjustment_brightness = 3.02
+
+[sub_resource type="TileSet" id=23]
+0/name = "mirror_holder.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="PlayState" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="BackgroundTileMap" type="TileMap" parent="."]
+position = Vector2( 0, -20 )
+tile_set = ExtResource( 4 )
+show_collision = true
+collision_layer = 3
+collision_mask = 3
+format = 1
+tile_data = PoolIntArray( -1, 2, 1, -65536, 2, 2, -65535, 2, 2, -65534, 2, 2, -65533, 2, 2, -65532, 2, 2, -65531, 2, 2, -65530, 2, 2, -65529, 2, 2, -65528, 2, 2, -65527, 2, 2, -65526, 2, 2, -65525, 2, 2, -65524, 2, 2, -65523, 2, 2, -65522, 2, 2, -65521, 2, 2, -65520, 2, 3, 65535, 2, 65537, 0, 2, 65540, 1, 2, 131074, 2, 2, 131074, 3, 2, 131074, 4, 2, 131074, 5, 2, 131074, 6, 2, 131074, 7, 2, 131074, 8, 2, 131074, 9, 2, 131074, 10, 2, 131074, 11, 2, 131074, 12, 2, 131074, 13, 2, 131074, 14, 2, 131074, 15, 2, 196612, 16, 2, 65539, 131071, 2, 65537, 65536, 2, 65539, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 65551, 2, 65537, 65552, 2, 65539, 196607, 2, 65537, 131072, 2, 65539, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 2, 65537, 131088, 2, 65539, 262143, 2, 65537, 196608, 2, 65539, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 2, 65537, 196624, 2, 65539, 327679, 2, 65537, 262144, 2, 65539, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 2, 65537, 262160, 2, 65539, 393215, 2, 65537, 327680, 2, 65539, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 2, 65537, 327696, 2, 65539, 458751, 2, 65537, 393216, 2, 65539, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 2, 65537, 393232, 2, 65539, 524287, 2, 65537, 458752, 2, 65539, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 2, 65537, 458768, 2, 131076, 458769, 2, 2, 458770, 2, 3, 589823, 2, 65537, 524288, 2, 65539, 524289, 0, 0, 524290, 3, 2, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 3, 2, 524302, 0, 0, 524303, 3, 0, 524304, 3, 0, 524305, 3, 0, 524306, 2, 65539, 655359, 2, 65537, 589824, 2, 131076, 589825, 2, 2, 589826, 2, 196614, 589827, 2, 2, 589828, 2, 2, 589829, 2, 2, 589830, 2, 2, 589831, 2, 2, 589832, 2, 2, 589833, 2, 2, 589834, 2, 2, 589835, 2, 2, 589836, 2, 2, 589837, 2, 196614, 589838, 2, 2, 589839, 2, 4, 589840, 2, 65540, 589841, 2, 131074, 589842, 2, 131075, 720895, 2, 131073, 655360, 2, 131074, 655361, 2, 131074, 655362, 2, 131074, 655363, 2, 131074, 655364, 2, 131074, 655365, 2, 131074, 655366, 2, 131074, 655367, 2, 131074, 655368, 2, 131074, 655369, 2, 131074, 655370, 2, 131074, 655371, 2, 131074, 655372, 2, 131074, 655373, 2, 131074, 655374, 2, 131074, 655375, 2, 131074, 655376, 2, 131075 )
+
+[node name="SmallWindow" parent="." instance=ExtResource( 2 )]
+position = Vector2( 384, 108 )
+
+[node name="SmallWindow2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 640, 108 )
+
+[node name="Door" parent="." instance=ExtResource( 13 )]
+position = Vector2( 992, 524 )
+
+[node name="LightManager" type="Node2D" parent="."]
+modulate = Color( 1.3, 1.3, 1, 1 )
+script = ExtResource( 1 )
+
+[node name="Origins" type="Node2D" parent="LightManager"]
+
+[node name="Line2D" type="Line2D" parent="LightManager/Origins"]
+position = Vector2( 64, 64 )
+points = PoolVector2Array( 512, 76, 640, 76, 640, 124 )
+default_color = Color( 1, 1, 1, 1 )
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="LightManager/Origins"]
+position = Vector2( 64, 64 )
+points = PoolVector2Array( 256, 76, 384, 76, 384, 124 )
+default_color = Color( 1, 1, 1, 1 )
+end_cap_mode = 2
+
+[node name="LevelObjects" type="Node2D" parent="."]
+
+[node name="Wiring" parent="LevelObjects" instance=ExtResource( 5 )]
+position = Vector2( 374, -260 )
+points = PoolVector2Array( 586, 656, 618, 656, 618, 752 )
+target = NodePath("../../Door")
+instant = true
+
+[node name="Wiring2" parent="LevelObjects" instance=ExtResource( 5 )]
+points = PoolVector2Array( 64, 396, 32, 396, 32, 588, 640, 588 )
+target = NodePath("../PlatformTrack")
+instant = true
+
+[node name="Wiring3" parent="LevelObjects" instance=ExtResource( 5 )]
+points = PoolVector2Array( 960, 268, 992, 268, 992, 12, 256, 12, 256, 252 )
+target = NodePath("../PlatformTrack2")
+instant = true
+
+[node name="InstantLightSwitch" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 64, 396 )
+rotation = -3.14159
+target = NodePath("../Wiring2")
+
+[node name="InstantLightSwitch3" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 960, 268 )
+rotation = -6.28318
+target = NodePath("../Wiring3")
+
+[node name="InstantLightSwitch2" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 960, 396 )
+target = NodePath("../Wiring")
+
+[node name="PlatformTrack" parent="LevelObjects" instance=ExtResource( 12 )]
+points = PoolVector2Array( 640, 588, 640, 236 )
+default_color = Color( 0.541176, 0.690196, 0.376471, 1 )
+platform_path = NodePath("../Platform")
+
+[node name="PlatformTrack2" parent="LevelObjects" instance=ExtResource( 12 )]
+points = PoolVector2Array( 256, 252, 256, 572 )
+default_color = Color( 0.541176, 0.690196, 0.376471, 1 )
+platform_path = NodePath("../Platform2")
+
+[node name="Platform" parent="LevelObjects" instance=ExtResource( 11 )]
+position = Vector2( 640, 588 )
+
+[node name="Platform2" parent="LevelObjects" instance=ExtResource( 11 )]
+position = Vector2( 256, 252 )
+
+[node name="BentMirrorPushBox" parent="LevelObjects" instance=ExtResource( 3 )]
+position = Vector2( 256, 204 )
+
+[node name="ForegroundTileMap" type="TileMap" parent="."]
+position = Vector2( 0, -20 )
+tile_set = SubResource( 23 )
+format = 1
+
+[node name="Player" parent="." instance=ExtResource( 14 )]
+position = Vector2( 394, 524 )
+
+[node name="LevelExit" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1120, 524 )
