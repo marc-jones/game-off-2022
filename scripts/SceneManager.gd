@@ -11,6 +11,7 @@ const LEVELS = [
 	preload("res://nodes/levels/Level2.tscn"),
 	preload("res://nodes/levels/Level3.tscn"),
 	preload("res://nodes/levels/Level4.tscn"),
+	preload("res://nodes/levels/Level5.tscn"),
 	preload("res://nodes/levels/LevelX.tscn")
 ]
 var levels_completed = []

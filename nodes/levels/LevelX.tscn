@@ -89,12 +89,12 @@ rotation = 3.14159
 target = NodePath("../Wiring")
 
 [node name="Wiring2" parent="LevelObjects" instance=ExtResource( 9 )]
-points = PoolVector2Array( 64, 460, 16, 460, 16, 588, 480, 588 )
+points = PoolVector2Array( 64, 524, 16, 524, 16, 588, 480, 588 )
 target = NodePath("../PlatformTrack")
 instant = true
 
 [node name="InstantLightSwitch" parent="LevelObjects" instance=ExtResource( 12 )]
-position = Vector2( 64, 460 )
+position = Vector2( 64, 524 )
 rotation = -3.14159
 target = NodePath("../Wiring2")
 
@@ -107,7 +107,7 @@ platform_path = NodePath("../Platform")
 position = Vector2( 480, 588 )
 
 [node name="PushBox" parent="LevelObjects" instance=ExtResource( 13 )]
-position = Vector2( 768, 527.992 )
+position = Vector2( 768, 540 )
 
 [node name="ForegroundTileMap" type="TileMap" parent="."]
 position = Vector2( 0, -20 )

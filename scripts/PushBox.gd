@@ -26,14 +26,15 @@ func body_exited_callback(body, dir):
 		body.push_callback(false, self)
 
 func _physics_process(delta):
-	velocity.x = 0.0
-	velocity.y += gravity * MASS * delta
-	for vars in pushing_bodies:
-		var body = vars[0]
-		var dir = vars[1]
-		if body.is_on_floor() and not sign(body.velocity.x) == sign(dir):
-			velocity.x = sign(body.velocity.x) * max(abs(body.velocity.x), abs(velocity.x))
-	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
+	if not Engine.editor_hint:
+		velocity.x = 0.0
+		velocity.y += gravity * MASS * delta
+		for vars in pushing_bodies:
+			var body = vars[0]
+			var dir = vars[1]
+			if body.is_on_floor() and not sign(body.velocity.x) == sign(dir):
+				velocity.x = sign(body.velocity.x) * max(abs(body.velocity.x), abs(velocity.x))
+		velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
 
 func set_mirror_angle(input_angle):
 	mirror_angle = input_angle
