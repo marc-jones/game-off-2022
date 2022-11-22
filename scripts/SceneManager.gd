@@ -12,6 +12,7 @@ const LEVELS = [
 	preload("res://nodes/levels/Level3.tscn"),
 	preload("res://nodes/levels/Level4.tscn"),
 	preload("res://nodes/levels/Level5.tscn"),
+	preload("res://nodes/levels/LevelC.tscn"),
 	preload("res://nodes/levels/LevelX.tscn"),
 	preload("res://nodes/levels/LevelA.tscn")
 ]
