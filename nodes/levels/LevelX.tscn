@@ -89,12 +89,12 @@ rotation = 3.14159
 target = NodePath("../Wiring")
 
 [node name="Wiring2" parent="LevelObjects" instance=ExtResource( 9 )]
-points = PoolVector2Array( 64, 524, 16, 524, 16, 588, 480, 588 )
+points = PoolVector2Array( 64, 492, 32, 492, 32, 588, 480, 588 )
 target = NodePath("../PlatformTrack")
 instant = true
 
 [node name="InstantLightSwitch" parent="LevelObjects" instance=ExtResource( 12 )]
-position = Vector2( 64, 524 )
+position = Vector2( 64, 492 )
 rotation = -3.14159
 target = NodePath("../Wiring2")
 
