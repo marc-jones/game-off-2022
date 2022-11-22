@@ -5,3 +5,7 @@ func _ready():
 
 func activate():
 	$AnimationPlayer.play("Open")
+
+func deactivate():
+	$AnimationPlayer.stop(false)
+	$AnimationPlayer.play_backwards("Open")
