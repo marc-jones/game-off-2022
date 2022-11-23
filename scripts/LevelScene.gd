@@ -26,21 +26,44 @@ func _input(event):
 
 func toggle_pause():
 	if paused:
-		pause_mode = PAUSE_MODE_INHERIT
-		for child in get_children():
-			child.pause_mode = PAUSE_MODE_INHERIT
+		unpause()
 		var pause = get_node("PauseMenu")
 		remove_child(pause)
 		pause.queue_free()
-		get_tree().paused = false
 	else:
 		pause_mode = PAUSE_MODE_PROCESS
 		for child in get_children():
 			child.pause_mode = PAUSE_MODE_STOP
 		var pause = pause_screen.instance()
-		pause.get_node("Restart").connect("button_up", self, "emit_signal", ["start_level", level_idx])
-		pause.get_node("SelectLevel").connect("button_up", self, "emit_signal", ["start_level_select"])
-		pause.get_node("Quit").connect("button_up", self, "emit_signal", ["start_menu"])
+		pause.get_node("Restart").connect(
+			"button_up",
+			self,
+			"pause_button_callback",
+			[["emit_signal", "start_level", level_idx]]
+		)
+		pause.get_node("SelectLevel").connect(
+			"button_up",
+			self,
+			"pause_button_callback",
+			[["emit_signal", "start_level_select"]]
+		)
+		pause.get_node("Quit").connect(
+			"button_up",
+			self,
+			"pause_button_callback",
+			[["emit_signal", "start_menu"]]
+		)
 		add_child(pause)
 		get_tree().paused = true
 	paused = not paused
+
+func unpause():
+	pause_mode = PAUSE_MODE_INHERIT
+	for child in get_children():
+		child.pause_mode = PAUSE_MODE_INHERIT
+	get_tree().paused = false
+
+func pause_button_callback(args):
+	unpause()
+	var command = args.pop_front()
+	callv(command, args)
