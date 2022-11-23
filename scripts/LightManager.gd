@@ -53,11 +53,12 @@ func _draw():
 			var positions = PoolVector2Array()
 			var cast_tos = PoolVector2Array()
 			for ray in ray_group:
-				positions.append(ray.get_position())
-				if ray.is_colliding():
-					cast_tos.append(ray.get_collision_point())
-				else:
-					cast_tos.append(ray.get_position() + ray.get_cast_to())
+				if is_instance_valid(ray):
+					positions.append(ray.get_position())
+					if ray.is_colliding():
+						cast_tos.append(ray.get_collision_point())
+					else:
+						cast_tos.append(ray.get_position() + ray.get_cast_to())
 			# Calculate alpha
 			var alpha = calculate_alpha(
 				positions[0].distance_to(positions[-1]),
