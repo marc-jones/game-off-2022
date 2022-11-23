@@ -37,6 +37,7 @@ func _physics_process(delta):
 		crouch_angle = clamp(crouch_angle, -MAX_LEAN, MAX_LEAN)
 		crouch_rotate()
 		velocity.x = 0.0
+		velocity.y += gravity * MASS * delta
 		velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
 	else:
 		var walk = START_STOP_FORCE * (Input.get_action_strength("move_right") - Input.get_action_strength("move_left"))
