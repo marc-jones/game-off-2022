@@ -20,6 +20,7 @@ var levels_completed = []
 var current_level = 0
 
 func _ready():
+	pause_mode = PAUSE_MODE_PROCESS
 	load_config()
 	deferred_start_menu()
 
@@ -75,8 +76,9 @@ func deferred_start_level():
 	clear_scene()
 	var level = LEVELS[current_level].instance()
 	level.level_idx = current_level
-#	menu.connect("start_game", self, "start_new_game")
-#	menu.connect("start_level_select", self, "start_level_select")
+	level.connect("start_level", self, "start_level")
+	level.connect("start_menu", self, "start_menu")
+	level.connect("start_level_select", self, "start_level_select")
 	level.connect("level_complete", self, "level_complete")
 	add_child(level)
 	initiate_fade_to_transparent("remove_transition_overlay", get_global_mouse_position())
