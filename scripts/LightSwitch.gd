@@ -10,7 +10,7 @@ var active = false
 export (NodePath) var target
 
 func _ready():
-	pass # Replace with function body.
+	$Fill.set_material($Fill.get_material().duplicate())
 
 func detect_light(delta):
 	total = clamp(total + delta, 0.0, FILL_SPEED)
