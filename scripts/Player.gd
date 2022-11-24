@@ -62,17 +62,29 @@ func _physics_process(delta):
 		for body in get_collision_exceptions():
 			remove_collision_exception_with(body)
 		if is_on_floor() and (jumping or falling):
+			$AnimationPlayer.stop()
+			$LegSprite.rotation = 0
+			$AnimationPlayer.play("Land")
 			jumping = false
 			falling = false
 		if (is_on_floor() or (falling and cayote_timer < CAYOTE_TIME)) and Input.is_action_just_pressed("jump"):
 			velocity.y = -JUMP_SPEED
 			jumping = true
 			falling = false
+			$AnimationPlayer.stop()
+			$LegSprite.rotation = 0
+			$AnimationPlayer.play("Jump")
 		if not is_on_floor() and not jumping and not falling:
 			falling = true
 			cayote_timer = 0.0
 		if falling:
 			cayote_timer += delta
+	if abs(velocity.x) > 0:
+		if not $AnimationPlayer.is_playing() and not falling and not jumping:
+			$AnimationPlayer.play("Walk")
+	else:
+		if $AnimationPlayer.get_current_animation() == "Walk":
+			$AnimationPlayer.play("RESET")
 
 func update_sprite(current_velocity):
 	if current_velocity.x < 0:
@@ -89,6 +101,8 @@ func face_right():
 	$BodySprite.flip_h = true
 
 func crouch():
+	$AnimationPlayer.stop()
+	$LegSprite.rotation = 0
 	$BodySprite.position.y = CROUCH_AMOUNT
 	$Area2D.position.y = CROUCH_AMOUNT
 
