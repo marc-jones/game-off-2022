@@ -6,7 +6,7 @@ signal start_menu
 var number_of_levels = 18
 var levels_completed = [0, 1, 2, 3, 8]
 
-const BUTTON_START_POS = Vector2(240, 204)
+const BUTTON_START_POS = Vector2(240, 252)
 const BUTTON_SPACING = 96
 const ROW_LENGTH = 6
 
