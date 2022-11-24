@@ -43,12 +43,16 @@ func activate():
 	$OnlineFill.show()
 	for node in online_nodes:
 		node.show()
+	if get_node(platform_path).has_method("activate"):
+		get_node(platform_path).activate()
 
 func deactivate():
 	active = false
 	$OnlineFill.hide()
 	for node in online_nodes:
 		node.hide()
+	if get_node(platform_path).has_method("deactivate"):
+		get_node(platform_path).deactivate()
 
 func _physics_process(delta):
 	if not Engine.editor_hint:
