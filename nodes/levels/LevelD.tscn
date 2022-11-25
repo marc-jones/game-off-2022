@@ -114,7 +114,7 @@ rotation = -9.42478
 target = NodePath("../../Wiring2")
 
 [node name="PushBox" parent="LevelObjects" instance=ExtResource( 5 )]
-position = Vector2( 608, 540 )
+position = Vector2( 736, 540 )
 mirror_angle = 58
 
 [node name="PlatformTrack" parent="LevelObjects" instance=ExtResource( 14 )]

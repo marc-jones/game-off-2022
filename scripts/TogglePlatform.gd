@@ -6,6 +6,8 @@ export (int) var width = 1 setget set_width
 func _ready():
 	set_width(width)
 	deactivate()
+	$CollisionShape2D.shape = $CollisionShape2D.shape.duplicate()
+	$Area2D/CollisionShape2D.shape = $Area2D/CollisionShape2D.shape.duplicate()
 
 func set_width(i):
 	width = i

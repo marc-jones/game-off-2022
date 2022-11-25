@@ -55,10 +55,10 @@
 0/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 64, 8 )
+extents = Vector2( 128, 8 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 64, 8 )
+extents = Vector2( 128, 8 )
 
 [node name="TogglePlatform" type="KinematicBody2D"]
 collision_layer = 0
