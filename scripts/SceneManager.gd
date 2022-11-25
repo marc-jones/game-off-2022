@@ -22,6 +22,7 @@ const LEVELS = [
 ]
 var levels_completed = []
 var current_level = 0
+var global_focus_pos = null
 
 func _ready():
 	pause_mode = PAUSE_MODE_PROCESS
@@ -40,14 +41,18 @@ func save_config():
 	config.set_value("save", "levels_completed", levels_completed)
 	config.save(CONFIG_FILEPATH)
 
-func level_complete(idx):
+func level_complete(idx, player_position):
 	levels_completed.append(idx)
 	levels_completed.sort()
 	save_config()
 	if idx + 1 < len(LEVELS):
+		global_focus_pos = player_position
 		start_level(idx + 1)
+		global_focus_pos = player_position
 	else:
+		global_focus_pos = player_position
 		start_menu()
+		global_focus_pos = player_position
 
 # PlayState
 #func start_new_game():
@@ -62,6 +67,13 @@ func level_complete(idx):
 #	add_child(new_game)
 #	initiate_fade_to_transparent("remove_transition_overlay")
 
+func get_valid_position():
+	if global_focus_pos == null:
+		return(get_global_mouse_position())
+	var return_val = global_focus_pos
+	global_focus_pos = null
+	return(return_val)
+
 # Start first level
 func play():
 	for idx in range(len(LEVELS)):
@@ -74,7 +86,7 @@ func play():
 func start_level(idx):
 	if not has_node("SceneTransition"):
 		current_level = idx
-		initiate_fade_to_black("deferred_start_level", get_global_mouse_position())
+		initiate_fade_to_black("deferred_start_level", get_valid_position())
 
 func deferred_start_level():
 	clear_scene()
@@ -85,12 +97,12 @@ func deferred_start_level():
 	level.connect("start_level_select", self, "start_level_select")
 	level.connect("level_complete", self, "level_complete")
 	add_child(level)
-	initiate_fade_to_transparent("remove_transition_overlay", get_global_mouse_position())
+	initiate_fade_to_transparent("remove_transition_overlay", get_valid_position())
 
 # MainMenu
 func start_menu():
 	if not has_node("SceneTransition"):
-		initiate_fade_to_black("deferred_start_menu", get_global_mouse_position())
+		initiate_fade_to_black("deferred_start_menu", get_valid_position())
 
 func deferred_start_menu():
 	clear_scene()
@@ -99,24 +111,24 @@ func deferred_start_menu():
 	menu.connect("start_level_select", self, "start_level_select")
 	menu.connect("start_credits", self, "start_credits")
 	add_child(menu)
-	initiate_fade_to_transparent("remove_transition_overlay", get_global_mouse_position())
+	initiate_fade_to_transparent("remove_transition_overlay", get_valid_position())
 
 # CreditsState
 func start_credits():
 	if not has_node("SceneTransition"):
-		initiate_fade_to_black("deferred_start_credits", get_global_mouse_position())
+		initiate_fade_to_black("deferred_start_credits", get_valid_position())
 
 func deferred_start_credits():
 	clear_scene()
 	var credits = credits_scene.instance()
 	credits.connect("start_menu", self, "start_menu")
 	add_child(credits)
-	initiate_fade_to_transparent("remove_transition_overlay", get_global_mouse_position())
+	initiate_fade_to_transparent("remove_transition_overlay", get_valid_position())
 
 # LevelSelect
 func start_level_select():
 	if not has_node("SceneTransition"):
-		initiate_fade_to_black("deferred_start_level_select", get_global_mouse_position())
+		initiate_fade_to_black("deferred_start_level_select", get_valid_position())
 
 func deferred_start_level_select():
 	clear_scene()
@@ -126,7 +138,7 @@ func deferred_start_level_select():
 	level_select.number_of_levels = len(LEVELS)
 	level_select.levels_completed = levels_completed
 	add_child(level_select)
-	initiate_fade_to_transparent("remove_transition_overlay", get_global_mouse_position())
+	initiate_fade_to_transparent("remove_transition_overlay", get_valid_position())
 
 # Transition functions
 func clear_scene():

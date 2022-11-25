@@ -18,7 +18,7 @@ func setup_exit():
 
 func body_entered_callback(body):
 	if body == $Player:
-		emit_signal("level_complete", level_idx)
+		emit_signal("level_complete", level_idx, $Player.position)
 
 func _input(event):
 	if event.is_action_pressed("pause"):
