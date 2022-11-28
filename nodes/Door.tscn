@@ -131,6 +131,20 @@ tracks/7/keys = {
 "update": 1,
 "values": [ 3, 3, 2 ]
 }
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_sound"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.001

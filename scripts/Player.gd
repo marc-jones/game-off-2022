@@ -25,6 +25,8 @@ var push_bodies = []
 
 onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+onready var audio = get_tree().get_root().get_node("Audio")
+
 func _physics_process(delta):
 	if Input.is_action_just_pressed("crouch") and is_on_floor():
 		crouching = true
@@ -64,6 +66,7 @@ func _physics_process(delta):
 		if is_on_floor() and (jumping or falling):
 			$AnimationPlayer.stop()
 			$LegSprite.rotation = 0
+			audio.play_sound("land")
 			$AnimationPlayer.play("Land")
 			jumping = false
 			falling = false
@@ -73,6 +76,7 @@ func _physics_process(delta):
 			falling = false
 			$AnimationPlayer.stop()
 			$LegSprite.rotation = 0
+			audio.play_sound("jump")
 			$AnimationPlayer.play("Jump")
 		if not is_on_floor() and not jumping and not falling:
 			falling = true
