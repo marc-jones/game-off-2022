@@ -2,11 +2,11 @@
 
 Theme: "cliché"
 
+This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/).
+
 ## Credits
 
-Music: "Magic Escape Room" Kevin MacLeod (incompetech.com)
-
-[Licensed under Creative Commons: By Attribution 4.0 License](http://creativecommons.org/licenses/by/4.0/)
+Music: "Magic Escape Room" Kevin MacLeod (incompetech.com) - [Licensed under Creative Commons: By Attribution 4.0 License](http://creativecommons.org/licenses/by/4.0/)
 
 Font: [Alagard by Hewett Tsoi](https://www.dafont.com/alagard.font)
 
