@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/light_switch/fill.png" type="Texture" id=1]
 [ext_resource path="res://scripts/LightSwitch.gd" type="Script" id=2]
@@ -29,6 +29,8 @@ shader_param/t = 0.0
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 2, 32 )
 
+[sub_resource type="AudioStreamGenerator" id=27]
+
 [node name="LightSwitch" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -53,3 +55,6 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 26 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 27 )
