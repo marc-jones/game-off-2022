@@ -3,6 +3,7 @@ extends Node2D
 const menu_scene = preload("res://nodes/scenes/MainMenu.tscn")
 const level_select_scene = preload("res://nodes/scenes/LevelSelect.tscn")
 const credits_scene = preload("res://nodes/scenes/Credits.tscn")
+const win_scene = preload("res://nodes/scenes/Win.tscn")
 const scene_transition = preload("res://nodes/scenes/SceneTransition.tscn")
 
 const CONFIG_FILEPATH = "user://game_off_2022.cfg"
@@ -42,17 +43,23 @@ func save_config():
 	config.save(CONFIG_FILEPATH)
 
 func level_complete(idx, player_position):
-	levels_completed.append(idx)
+	if not idx in levels_completed:
+		levels_completed.append(idx)
 	levels_completed.sort()
 	save_config()
+	global_focus_pos = player_position
 	if idx + 1 < len(LEVELS):
-		global_focus_pos = player_position
 		start_level(idx + 1)
-		global_focus_pos = player_position
 	else:
-		global_focus_pos = player_position
-		start_menu()
-		global_focus_pos = player_position
+		var completed = true
+		for idx in range(len(LEVELS)):
+			if not idx in levels_completed:
+				completed = false
+		if completed:
+			start_win_screen()
+		else:
+			start_level_select()
+	global_focus_pos = player_position
 
 # PlayState
 #func start_new_game():
@@ -123,6 +130,18 @@ func deferred_start_credits():
 	var credits = credits_scene.instance()
 	credits.connect("start_menu", self, "start_menu")
 	add_child(credits)
+	initiate_fade_to_transparent("remove_transition_overlay", get_valid_position())
+
+# WinScreen
+func start_win_screen():
+	if not has_node("SceneTransition"):
+		initiate_fade_to_black("deferred_start_win_screen", get_valid_position())
+
+func deferred_start_win_screen():
+	clear_scene()
+	var win = win_scene.instance()
+	win.connect("start_menu", self, "start_menu")
+	add_child(win)
 	initiate_fade_to_transparent("remove_transition_overlay", get_valid_position())
 
 # LevelSelect

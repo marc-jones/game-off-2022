@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Credits.gd" type="Script" id=1]
 [ext_resource path="res://nodes/ButtonTheme.tres" type="Theme" id=4]
@@ -20,6 +20,11 @@ adjustment_brightness = 3.02
 
 [sub_resource type="DynamicFont" id=24]
 size = 80
+outline_size = 2
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=25]
+size = 24
 outline_size = 2
 font_data = ExtResource( 10 )
 
@@ -59,3 +64,25 @@ margin_right = 608.0
 margin_bottom = 540.0
 theme = ExtResource( 4 )
 text = "Back"
+
+[node name="Label2" type="Label" parent="UI"]
+margin_left = 80.0
+margin_top = 188.0
+margin_right = 944.0
+margin_bottom = 476.0
+custom_colors/font_color = Color( 0.76, 1.1, 0.41, 1 )
+custom_colors/font_outline_modulate = Color( 0.541176, 0.690196, 0.376471, 1 )
+custom_fonts/font = SubResource( 25 )
+text = "Design, code, and art by Marc Jones
+
+Thanks to Jemima, Bella, Tom & Hugh for playtesting and discussion
+
+Music: Magic Escape Room by Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+
+Font: Alagard by Hewett Tsoi
+
+Colour Palette: CC-29 by Alpha6"
+align = 1
+valign = 1
+autowrap = true
