@@ -13,14 +13,18 @@ const ROW_LENGTH = 6
 onready var PACKED_LEVEL_BUTTON = preload("res://nodes/LevelSelectButton.tscn")
 onready var PACKED_TICK = preload("res://nodes/Tick.tscn")
 
+onready var audio = get_tree().get_root().get_node("Audio")
+
 func _ready():
 	var _discard = $UI/Back.connect("button_up", self, "start_menu")
 	setup_level_buttons()
 
 func start_menu():
+	audio.play_sound("on")
 	emit_signal("start_menu")
 
 func start_level(idx):
+	audio.play_sound("on")
 	emit_signal("start_level", idx)
 
 func setup_level_buttons():

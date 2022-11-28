@@ -10,6 +10,8 @@ const pause_screen = preload("res://nodes/scenes/PauseMenu.tscn")
 var level_idx = 0
 var paused = false
 
+onready var audio = get_tree().get_root().get_node("Audio")
+
 func _ready():
 	setup_exit()
 
@@ -64,6 +66,7 @@ func unpause():
 	get_tree().paused = false
 
 func pause_button_callback(args):
+	audio.play_sound("on")
 	unpause()
 	var command = args.pop_front()
 	callv(command, args)
