@@ -21,6 +21,8 @@ func _process(delta):
 		active = true
 		$Bulb.show()
 		get_node(target).activate()
-		audio.play_sound("on")
+		# Atrocious hack to stop the switch on the main screen making noise!
+		if not get_parent().get_parent().get_name() == "MainMenu":
+			audio.play_sound("on")
 	else:
 		total = 0.0
