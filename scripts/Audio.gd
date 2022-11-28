@@ -11,7 +11,7 @@ const sound_library = {
 
 const music_path = preload("res://assets/sounds/Magic Escape Room.mp3")
 
-const music_volume = -15
+const music_volume = -10
 
 var stream_library = {
 }
