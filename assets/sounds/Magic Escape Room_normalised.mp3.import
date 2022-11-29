@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Magic Escape Room_normalised.mp3-4882c13b95320b24a2aafc346231164d.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Magic Escape Room_normalised.mp3"
+dest_files=[ "res://.import/Magic Escape Room_normalised.mp3-4882c13b95320b24a2aafc346231164d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

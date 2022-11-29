@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Magic Escape Room.mp3-37c7f0580862fac31eb73bf8766cd121.mp3str"
+
+[deps]
+
+source_file="res://raw_assets/Magic Escape Room.mp3"
+dest_files=[ "res://.import/Magic Escape Room.mp3-37c7f0580862fac31eb73bf8766cd121.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,17 +1,17 @@
 extends Node2D
 
 const sound_library = {
-	"jump": ["res://assets/sounds/jump.wav", -10, 1.2],
-	"land": ["res://assets/sounds/landing.wav", -10, 1.2],
+	"jump": ["res://assets/sounds/jump.wav", -15, 1.2],
+	"land": ["res://assets/sounds/landing.wav", -15, 1.2],
 	"on": ["res://assets/sounds/on.wav", -25, 1.0],
 	"off": ["res://assets/sounds/off.wav", -25, 1.0],
-	"door_open": ["res://assets/sounds/door_open.wav", -10, 1.0],
-	"door_close": ["res://assets/sounds/door_close.wav", -10, 1.0]
+	"door_open": ["res://assets/sounds/door_open.wav", -15, 1.0],
+	"door_close": ["res://assets/sounds/door_close.wav", -15, 1.0]
 }
 
-const music_path = preload("res://assets/sounds/Magic Escape Room.mp3")
+const music_path = preload("res://assets/sounds/Magic Escape Room_normalised.mp3")
 
-const music_volume = -10
+const music_volume = -30
 
 var stream_library = {
 }
